@@ -1,0 +1,29 @@
+﻿@using ECommerce.DtoLayer.Dtos.BodySizeDtos;
+@model UpdateBodySizeDto
+@{
+    ViewData["Title"] = "UpdateBodySize";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="header">
+            <h2>Beden Bilgisi Güncelleme Sayfası</h2>
+        </div>
+        <div class="body">
+            <form method="post" class="forms-sample">
+                <input type="hidden" asp-for="Id" />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Beden Adı : </span>
+                    </div>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Beden bilgisi adını giriniz." aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary me-2 col-12">Beden bilgisi Güncelle</button>
+            </form>
+        </div>
+    </div>
+</div>

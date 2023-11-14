@@ -1,0 +1,62 @@
+﻿@model UpdateContactDto
+@{
+    ViewData["Title"] = "UpdateContact";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                   
+                </div>
+                <div class="card-body">
+                    <form method="post" class="forms-sample">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label for="adress" class="form-label">Adres :</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">Adres : </span>
+                                <input type="text" asp-for="Adress" class="form-control" id="adress" placeholder="Adres bilgilerini giriniz." aria-describedby="basic-addon1">
+                            </div>
+                            <span asp-validation-for="Adress" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Telefon :</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">Telefon : </span>
+                                <input type="text" asp-for="Phone" class="form-control" id="phone" placeholder="Telefon bilgilerini giriniz." aria-describedby="basic-addon1">
+                            </div>
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Mail :</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">Mail : </span>
+                                <input type="text" asp-for="Email" class="form-control" id="email" placeholder="Mail bilgilerinizi giriniz." aria-describedby="basic-addon1">
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="iframe" class="form-label">Harita url :</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">Harita url : </span>
+                                <input type="text" asp-for="Iframe" class="form-control" id="iframe" placeholder="Harita url bilgilerinizi giriniz." aria-describedby="basic-addon1">
+                            </div>
+                            <span asp-validation-for="Iframe" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary col-12">İletişim Bilgilerini Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

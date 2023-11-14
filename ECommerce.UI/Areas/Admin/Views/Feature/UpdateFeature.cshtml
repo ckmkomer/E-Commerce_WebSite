@@ -1,0 +1,23 @@
+﻿@model UpdateFeatureDto
+
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="/Admin/Feature/UpdateFeature">
+    <input type="hidden" asp-for="Id" /> <!-- Güncellenecek özelliğin kimliğini saklamak için bir gizli alan -->
+
+    <div class="form-group">
+        <label for="Title">Başlık:</label>
+        <input type="text" id="Title" name="Title" class="form-control" asp-for="Title" required>
+    </div>
+
+    <div class="form-group">
+        <label for="ImageURL">Görsel URL:</label>
+        <input type="text" id="ImageURL" name="ImageURL" class="form-control" asp-for="ImageURl" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+

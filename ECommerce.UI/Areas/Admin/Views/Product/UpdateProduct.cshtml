@@ -1,0 +1,34 @@
+﻿@model UpdateProductDto;
+
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Ürün Düzenle</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="Name">Ürün Adı</label>
+            <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required>
+        </div>
+        <div class="form-group">
+            <label for="Price">Fiyat</label>
+            <input type="number" class="form-control" id="Price" name="Price" value="@Model.Price" required>
+        </div>
+        <div class="form-group">
+            <label for="Discount">İndirimli Fiyatı</label>
+            <input type="number" class="form-control" id="Discount" name="Discount" value="@Model.Discount">
+        </div>
+        <div class="form-group">
+            <label for="Description">Açıklama</label>
+            <textarea class="form-control" id="Description" name="Description" rows="4" required>@Model.Description</textarea>
+        </div>
+        <div class="form-group">
+            <label for="Image">Ürün Görseli</label>
+            <input type="text" class="form-control" id="Image" name="Image" value="@Model.Image">
+        </div>
+        <button type="submit" class="btn btn-primary">Ürünü Güncelle</button>
+    </form>
+</div>
+

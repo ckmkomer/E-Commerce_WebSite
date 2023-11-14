@@ -1,0 +1,50 @@
+﻿@model List<ResultFeatureDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            
+            <th>Görsel</th>
+            <th>Sil</th>
+            <th>Düzenle</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (Model!=null)
+        {
+                
+            
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.ImageURl</td>
+                
+                
+
+                <td>
+                    <a href="/Admin/Feature/DeleteFeature/@item.Id" class="btn btn-outline-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                <td><a href="/Admin/Feature/UpdateFeature/@item." class="btn btn-outline-warning">Güncelle</a></td>
+
+
+
+            </tr>
+        }
+        }
+    </tbody>
+</table>
+
+
+<a href="/Admin/Feature/AddFeature" class="btn btn-outline-info">Yeni Öne Çıkan Ekle</a>
+

@@ -1,0 +1,39 @@
+﻿@using DtoLayer.Dtos.ServiceDtos;
+@model List<ResultServiceDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table table-hover table-custom spacing8">
+            <thead>
+                <tr>
+                    
+                    <th>Hizmet Adı</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Image</td>
+                        <td>
+                    <a href="/Admin/Service/DeleteService/@item.Id" class="btn btn-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                <td><a href="/Admin/Service/UpdateService/@item.Id" class="btn btn-success ">Güncelle</a></td>
+                     </tr>   
+                }
+            </tbody>
+        </table>
+
+        
+<a href="/Admin/Service/AddService" class="btn btn-outline-info">Yeni Hizmet Ekle</a>
+    </div>
+</div>

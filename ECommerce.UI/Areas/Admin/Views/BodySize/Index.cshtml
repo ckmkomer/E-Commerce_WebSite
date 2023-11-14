@@ -1,0 +1,41 @@
+﻿
+@model List<ResultBodySizeDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marka</th>
+            <th>Sil</th>
+            <th>Düzenle</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>#</td>
+                <td>@item.Name</td>
+                <td>
+                    <a href="/Admin/BodySize/DeleteBodySize/@item.Id" class="btn btn-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                <td><a href="/Admin/BodySize/UpdateBodySize/@item.Id" class="btn btn-success ">Güncelle</a></td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<a href="/Admin/BodySize/AddBodySize" class="btn btn-outline-info">Yeni Beden Ekle</a>

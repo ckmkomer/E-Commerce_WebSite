@@ -1,0 +1,49 @@
+﻿@using ECommerce.EntityLayer.Concrete;
+@model List<ResultProductDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered ">
+<thead>
+    <tr>
+       
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>İndirimli Fiyatı</th>
+        <th>Açıklama</th>
+        <th>Ürün Görseli</th>
+        <th>Sil</th>
+        <th>Günceller</th>
+        
+
+    </tr>
+</thead>
+<tbody>
+    @foreach (var product in Model)
+    {
+        <tr>
+                
+                <td>@(product.Name ?? "")</td>
+                <td>@(product.Price.ToString("C") ?? "")</td>
+                <td>@(product.Discount)</td>
+                <td>@(product.Description ?? "")</td>
+                <td>@(product.Image ?? "")</td>
+         
+                <td>
+                    <a href="/Admin/Product/DeleteProduct/@product.Id" class="btn btn-outline-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                <td><a href="/Admin/Product/UpdateProduct/@product.Id" class="btn btn-success">Güncelle</a></td>
+           
+          
+            
+        </tr>
+    }
+</tbody>
+</table>
+
+<a href="/Admin/Product/AddProduct" class="btn btn-outline-info">Yeni Ürün Ekle</a>

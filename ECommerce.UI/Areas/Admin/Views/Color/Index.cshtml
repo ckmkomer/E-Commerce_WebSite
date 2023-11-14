@@ -1,0 +1,37 @@
+﻿@model List<ResultColorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Renk</th>
+            <th>Sil</th>
+            <th>Düzenle</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>
+                    <a href="/Admin/Color/DeleteColor/@product.Id" class="btn btn-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                <td><a href="/Admin/Color/UpdateColor/@product.Id" class="btn btn-success ">Güncelle</a></td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Admin/Color/AddColor" class="btn btn-outline-info">Yeni Renk Ekle</a>

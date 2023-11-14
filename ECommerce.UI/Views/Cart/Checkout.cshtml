@@ -1,0 +1,186 @@
+﻿@model OrderModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<section>   
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h4 class="mb-3">Sipariş Detayları</h4>
+                <form asp-action="/checkout" method="post" id="checkoutForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="@Model.FirstName">Ad</label>
+                        <input asp-for="@Model.FirstName" value="" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="@Model.LastName">Soyad</label>
+                        <input asp-for="@Model.LastName" value="" class="form-control" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Address">Adres</label>
+                    <textarea asp-for="@Model.Address" class="form-control"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="@Model.City">Şehir</label>
+                        <input asp-for="@Model.City" value="" class="form-control" />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="@Model.Phone">Telefon</label>
+                        <input asp-for="@Model.Phone" value="" class="form-control" />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="@Model.Email">E-Posta</label>
+                        <input asp-for="@Model.Email" value="" class="form-control" />
+                    </div>
+                </div>
+                <hr class="mb-4" />
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info">
+                    <label class="custom-control-label" for="save-info">Bu bilgileri bir sonraki alışveriş için kaydet</label>
+                </div>
+                <hr class="mb-4" />
+                <h4 class="mb-3 mt-5">Ödeme İşlemleri</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Kart Adı</label>
+                        <input asp-for="@Model.CardName" value="" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Kart Numarası</label>
+                        <input asp-for="@Model.CardNumber" value="" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label>Son Kullanma Tarihi/Ay</label>
+                        <input asp-for="@Model.ExpirationMonth" value="" class="form-control" />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Son Kullanma Tarihi/Yıl</label>
+                        <input asp-for="@Model.ExpirationYear" value="" class="form-control" />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="@Model.Cvv">CVV</label>
+                        <input asp-for="@Model.Cvv" value="" class="form-control" />
+                    </div>
+                </div>
+                <hr class="mb-4" />
+                    <button type="submit" class="btn btn-primary Siparişi Tamamla"> <a href="/Cart/EndOrder" class="btn btn-primary"> Siparişi Tamamla </a> </button>
+            </form>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">
+                        <span class="text-muted">Sepet Toplamı</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        @if (Model.CartModel != null && Model.CartModel.CartItems.Count > 0)
+                        {
+                            @foreach (var item in Model.CartModel.CartItems)
+                            {
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="my-0">
+                                            @item.Name
+                                            <small>x @item.Quantity</small>
+                                        </h6>
+                                    </div>
+                                    <span class="text-muted">@item.Price TL</span>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="list-group-item text-center">Sepetiniz boş.</li>
+                        }
+
+                        @if (Model.CartModel != null)
+                        {
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total (TL)</span>
+                                <strong>@Model.CartModel.TotalPrice() TL</strong>
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            <li class="list-group-item text-danger">Sepet bulunamadı.</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br />
+</section>
+
+<!-- SweetAlert kütüphanesini ekleyin -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).ready(function () {
+       
+        $('#checkoutForm').submit(function (e) {
+            e.preventDefault(); // Formun normal submit işlemini engelle
+
+            // SweetAlert ile özel bir ileti oluştur
+            Swal.fire({
+                title: 'Siparişi Tamamla',
+                text: 'Siparişinizi tamamlamak istediğinizden emin misiniz?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, Tamamla',
+                cancelButtonText: 'İptal',
+            }).then((result) => {
+                // Eğer kullanıcı "Evet, Tamamla" dediyse, formu gerçekten submit et
+                if (result.isConfirmed) {
+                    // Form submit işlemi
+                    $.ajax({
+                        url: $('#checkoutForm').attr('action'),
+                        type: 'POST',
+                        data: $('#checkoutForm').serialize(),
+                        success: function (response) {
+                            // Başarıyla gönderildiğinde SweetAlert ile mesaj göster
+                            Swal.fire({
+                                title: 'Sipariş Başarıyla Tamamlandı',
+                                text: 'Siparişiniz başarıyla oluşturulmuştur. Sipariş numaranız: ' + response.orderNumber,
+                                icon: 'success',
+                            });
+                        },
+                        error: function () {
+                            // Hata durumunda SweetAlert ile hata mesajı göster
+                            Swal.fire({
+                                title: 'Hata',
+                                text: 'Sipariş oluşturulurken bir hata oluştu.',
+                                icon: 'error',
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

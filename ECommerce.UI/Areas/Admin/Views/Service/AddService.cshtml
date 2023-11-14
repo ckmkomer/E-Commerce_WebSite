@@ -1,0 +1,23 @@
+﻿@using DtoLayer.Dtos.ServiceDtos;
+@model CreateServiceDto
+@{
+    ViewData["Title"] = "AddService";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Ürün Ekle</h2>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Title">Hizmet Adı</label>
+            <input asp-for="Title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Görsel</label>
+            <input asp-for="Image" class="form-control" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Hizmet Ekle</button>
+    </form>
+</div>
+

@@ -1,0 +1,354 @@
+﻿@using ECommerce.UI.Models
+@model CartModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="animsition">
+
+    <div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+                Ana Sayfa
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <span class="stext-109 cl4">
+                Sepetiniz
+            </span>
+        </div>
+    </div>
+
+
+    <!-- Shoping Cart -->
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-30">
+                <div class="m-l-25 m-r--38 m-lr-0-xl">
+                    <div class="wrap-table-shopping-cart">
+                        <form>
+                            <table class="table-shopping-cart">
+                                <tr class="table_head">
+                                    <th class="column-1">Ürün</th>
+                                    <th class="column-1"></th>
+                                    <th class="column-3">FİYAT</th>
+                                    <th class="column-1">Adet</th>
+                                    <th class="column-1">Azalt/Arttır</th>
+                                    <th class="column-1">Toplam</th>
+
+                                </tr>
+
+                                @if (Model.CartItems != null && Model.CartItems.Count > 0)
+                                {
+                                    @foreach (var item in Model.CartItems)
+                                    {
+                                        <tr class="table_row">
+                                            <td class="column-1">
+                                                <a href="/product/productdetail/@item.ProductId">
+                                                    <div class="how-itemcart1">
+                                                        <img src="@item.ImageUrl" alt="IMG">
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="column-2">@item.Name</td>
+                                            <td class="column-3">@item.Price TL</td>
+                                            <td class="column-1">@item.Quantity</td>
+                                            <td class="column-5">
+                                                <button class="product-remove " data-product-id="@item.ProductId">
+                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                                    </div>
+                                                </button><button class="product-add fa-solid fa-dash " data-product-id="@item.ProductId">
+                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                                    </div>
+                                                </button>
+                                            </td>
+                                            <td class="column-1">@(item.Price * item.Quantity) TL</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td class="text-center" colspan="5">Sepetiniz boş.</td>
+                                    </tr>
+                                }
+                            </table>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-10 col-lg-7 col-xl-4 m-lr-auto m-b-30">
+                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                    <h4 class="mtext-109 cl2 p-b-30">
+                        Sepet Toplamı 
+                    </h4>
+
+
+
+                    <div class="flex-w flex-t p-t-27 p-b-33">
+                        <div class="size-208">
+                            <span class="mtext-101 cl2">
+                                Toplam: @(Model.TotalPrice())
+                            </span>
+                        </div>
+
+                        @* <div class="size-209 p-t-1">
+                            <div class="mtext-110 cl2">
+                                  @(Model.TotalPrice())
+                            </div>
+                        </div> *@
+                    </div>
+
+                    <form method="post" asp-action="Checkout" asp-controller="Cart">
+
+                        <button href="~/Checkout" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer btn btn-primary">
+                            <i class="fa fa-arrow-circle-right fa-fw"></i>
+                            SİPARİŞ OLUŞTUR
+                        </button>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+    <!-- Footer -->
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+
+
+    <!--===============================================================================================-->
+
+
+</body>
+</html>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".product-remove").click(function () {
+            var productId = $(this).data("productId");
+            sendProductIdToRemoveController(productId);
+        });
+
+        $(".product-add").click(function () {
+            var productId = $(this).data("productId");
+            sendProductIdToAddController(productId);
+        });
+    });
+
+    function sendProductIdToRemoveController(productId) {
+        $.ajax({
+            url: '/Cart/DeleteFromCart',
+            type: 'post',
+            data: { productId: productId },
+            success: function (result) {
+                // Başarılı bir şekilde sepetten kaldırıldığında yapılacak işlemler
+            },
+            error: function () {
+                // Hata durumunda yapılacak işlemler
+            }
+        });
+    }
+
+    function sendProductIdToAddController(productId) {
+        var quantity = 1;
+        $.ajax({
+            url: '/Cart/AddToCart',
+            type: 'post',
+            data: { productId: productId, quantity: quantity },
+            success: function (result) {
+                // Başarılı bir şekilde sepete eklendiğinde yapılacak işlemler
+            },
+            error: function () {
+                // Hata durumunda yapılacak işlemler
+            }
+        });
+    }
+</script>
+
+
+@* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        $(".product-remove").click(function () {
+         
+            var productId = $(this).data("productId");
+
+         
+            sendProductIdToRemoveController(productId);
+        });
+        $(".product-add").click(function () {
+          n
+            var productId = $(this).data("productId");
+
+         
+            sendProductIdToAddController(productId);
+        });
+
+    });
+
+    function sendProductIdToRemoveController(productId) {
+        $.ajax({
+            url: '/Cart/DeleteFromCart', /
+            type: 'post', 
+            data: { productId: productId }, 
+            success: function (result) {
+              
+            },
+            error: function () {
+               
+            }
+        });
+    }
+    function sendProductIdToAddController(productId) {
+        var quantity = 1;
+        $.ajax({
+            url: '/Cart/AddToCart', // 
+            type: 'post',
+            data: { productId: productId, quantity: quantity },
+            success: function (result) {
+                // Başarılı bir şekilde sepete eklendiğinde yapılacak işlemler
+            },
+            error: function () {
+                // Hata durumunda yapılacak işlemler
+            }
+        });
+    }
+
+
+
+
+</script>
+ *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <h1>Your Cart</h1>
+
+<section>    
+<div class="row mt-5">
+    <div class="col-md-8">
+        <div class="text-left">
+            <h4>Cart Items</h4>
+        </div>
+
+        @if (Model.CartItems.Count > 0)
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/img/@item.ImageUrl" width="80" />
+                            </td>
+                            <td>@item.Name</td>
+                            <td>@item.Price.ToString("c")</td>
+                            <td>@item.Quantity</td>
+                            <td>@(item.Quantity * item.Price).ToString("c")</td>
+                            <td>
+                                <form asp-controller="Cart" asp-action="DeleteCart" method="post">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-times fa-fw"></i> Remove
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                No Products in Your Cart!
+            </div>
+        }
+    </div>
+    <div class="col-md-4">
+        @if (Model.CartItems.Count > 0)
+        {
+            <div class="text-left">
+                <h4>Cart Summary</h4>
+            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Cart Total</th>
+                        <td>@Model.TotalPrice().ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <th>Shipping</th>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th>Order Total</th>
+                        <td>@Model.TotalPrice().ToString("c")</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a href="/" class="btn btn-primary">
+                    <i class="fa fa-arrow-circle-left fa-fw"></i> Continue Shopping
+                </a>
+                <a href="/checkout" class="btn btn-primary">
+                    Checkout <i class="fa fa-arrow-circle-right fa-fw"></i>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+
+</section> *@

@@ -1,0 +1,159 @@
+﻿@using ECommerce.DtoLayer.Dtos.AppUserDtos;
+@model RegisterAppUserDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ecommerce</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+    <link href="~/NiceAdmin/assets/img/favicon.png" rel="icon">
+    <link href="~/NiceAdmin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+    <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/NiceAdmin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/NiceAdmin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/NiceAdmin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/NiceAdmin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+    <link href="~/NiceAdmin/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                    <img src="~/NiceAdmin/assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">Kayıt Ol</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  
+
+                                    <form method="post" class="row g-3 needs-validation" novalidate>
+                                        <!-- Ad input -->
+                                        <div class="col-12">
+                                            <label asp-for="Name" class="form-label">Ad</label>
+                                            <input asp-for="Name" class="form-control" required />
+                                            <span asp-validation-for="@Model.Name" style="color: darkred; font-size:12px;"></span>
+                                        </div>
+
+                                        <!-- Soyad input -->
+                                        <div class="col-12">
+                                            <label asp-for="Surname" class="form-label">Soy Ad</label>
+                                            <input asp-for="Surname" class="form-control" required />
+                                            <span asp-validation-for="@Model.Surname" style="color: darkred; font-size:12px;"></span>
+                                        </div>
+
+                                        <!-- Email input -->
+                                        <div class="col-12">
+                                            <label asp-for="Email" class="form-label">Email</label>
+                                            <input asp-for="Email" class="form-control" required />
+                                            <span asp-validation-for="@Model.Email" style="color: darkred; font-size:12px;"></span>
+                                        </div>
+
+                                        <!-- Kullanıcı Adı input -->
+                                        <div class="col-12">
+                                            <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend"></span>
+                                                <input asp-for="UserName" class="form-control" id="UserName" required />
+                                                <span asp-validation-for="@Model.UserName" style="color: darkred; font-size:12px;"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Şifre input -->
+                                        <div class="col-12">
+                                            <label asp-for="Password" class="form-label">Şifre</label>
+                                            <input type="password" asp-for="Password" class="form-control" required />
+                                            <span asp-validation-for="@Model.Password" style="color: darkred; font-size:12px;"></span>
+                                        </div>
+
+                                        <!-- Şifre onayı input -->
+                                        <div class="col-12">
+                                            <label asp-for="ConfirmPassword" class="form-label">Şifre Tekrar</label>
+                                            <input type="password" asp-for="ConfirmPassword" class="form-control" required />
+                                            <span asp-validation-for="@Model.ConfirmPassword" style="color: darkred; font-size:12px;"></span>
+                                        </div>
+                                        
+
+                                        <!-- Şartları Kabul checkbox -->
+                                        <div class="col-12">
+                                            @* <div class="form-check">
+                                            <input asp-for="" class="form-check-input" required />
+                                            <label class="form-check-label" for="AcceptTerms">Ben <a href="#">şartları ve koşulları</a> kabul ediyorum</label>
+                                            <div class="invalid-feedback">Göndermeden önce kabul etmelisiniz.</div>
+                                            </div> *@
+                                        </div>
+
+                                        <!-- Kayıt Ol butonu -->
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Kayıt Ol</button>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <p class="small mb-0">Bir hesabınız var mı? <a href="pages-login.html">Giriş Yap</a></p>
+                                        </div>
+                                    </form>
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+    <script src="~/NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/NiceAdmin/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+    <script src="~/NiceAdmin/assets/js/main.js"></script>
+
+</body>
+
+</html>

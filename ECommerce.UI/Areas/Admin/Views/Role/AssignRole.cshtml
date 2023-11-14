@@ -1,0 +1,31 @@
+﻿@using ECommerce.UI.Areas.Admin.Models;
+@model List<RoleAssignViewModel>
+@{
+    ViewData["Title"] = "AssignRole";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="header">
+        </div>
+        <div class="body">
+            <form method="post" class="forms-sample">
+                <div class="row clearfix">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="col-12">
+                            <div class="fancy-checkbox">
+                                <label><input type="checkbox" asp-for="@Model[i].Exists"><span>@Model[i].Name</span></label>
+                                <input type="hidden" asp-for="@Model[i].RoleID" class="form-control" aria-label="Text input with checkbox">
+                                <input type="hidden" asp-for="@Model[i].Name" class="form-control" aria-label="Text input with checkbox">
+                            </div>
+                        </div>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary me-2 col-12">Değişiklikleri Kaydet!</button>
+            </form>
+        </div>
+    </div>
+</div>
+

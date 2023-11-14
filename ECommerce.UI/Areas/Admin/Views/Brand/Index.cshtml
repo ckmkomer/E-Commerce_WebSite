@@ -1,0 +1,36 @@
+﻿@model List<ResultBrandDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    <a href="/Admin/Brand/DeleteBrand/@item.Id" class="btn btn-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+                
+                <td><a href="/Admin/Brand/UpdateBrand/@item.Id" class="btn btn-success ">Güncelle</a></td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Admin/Brand/AddBrand" class="btn btn-outline-info">Yeni Marka Ekle</a>

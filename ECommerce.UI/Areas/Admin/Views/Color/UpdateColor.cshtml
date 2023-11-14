@@ -1,0 +1,16 @@
+﻿@model UpdateColorDto
+@{
+    ViewData["Title"] = "UpdateColor";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">Renk:</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+
+
+

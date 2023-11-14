@@ -1,0 +1,16 @@
+﻿@model CreateBrandDto
+@{
+    ViewData["Title"] = "AddBrand";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">Marka:</label>
+        <input type="text" class="form-control" id="Name" name="Name" required>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
+

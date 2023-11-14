@@ -1,0 +1,20 @@
+﻿@using ECommerce.DtoLayer.Dtos.GenreCategoryDtos;
+@model CreateCategoryDto
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<form method="post" >
+    <div class="form-group">
+        <label asp-for="Name">Kategori Adı:</label>
+        <input type="text" class="form-control" id="cName" name="Name" required>
+    </div>
+
+  
+
+    <button type="submit" class="btn btn-success">Kategori Ekle</button>
+</form>
+
+

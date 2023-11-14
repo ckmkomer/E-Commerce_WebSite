@@ -1,0 +1,43 @@
+﻿@using ECommerce.DtoLayer.Dtos.GenreCategoryDtos
+@model List<ResultCategoryDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+      {
+            
+            <tr>
+                <td>@item.Name</td>
+                
+
+                <td>
+                    <a href="/Admin/Category/DeleteCategory/@item.Id" class="btn btn-outline-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                <td><a href="/Admin/Category/UpdateCategory/@item.Id" class="btn btn-success">Güncelle</a></td>
+
+
+
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+<a href="/Admin/Category/AddCategory" class="btn btn-outline-info">Yeni Kategori Ekle</a>
+

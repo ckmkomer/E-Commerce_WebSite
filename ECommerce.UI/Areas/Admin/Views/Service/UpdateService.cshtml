@@ -1,0 +1,24 @@
+﻿@using DtoLayer.Dtos.ServiceDtos;
+@model UpdateServiceDto
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+   
+    <form method="post">
+        <div class="form-group">
+            <label for="Title">Hizmet Adı</label>
+            <input type="text" class="form-control" id="Name" name="Name" value="@Model.Title" required>
+        </div>
+        <div class="form-group">
+            <label for="Image">Hizmet Adı</label>
+            <input type="text" class="form-control" id="Image" name="Image" value="@Model.Image" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    </form>
+</div>
+

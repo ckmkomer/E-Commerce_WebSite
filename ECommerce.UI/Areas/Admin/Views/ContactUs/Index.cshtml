@@ -1,0 +1,41 @@
+﻿@using ECommerce.EntityLayer.Concrete;
+@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered ">
+    <thead>
+        <tr>
+
+            <th>Mail</th>
+            <th>Mesaj İçeriği</th>
+            <th>Sil</th>
+            
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Email</td>
+                <td>@item.Message</td>
+                
+                <td>
+                    <a href="/Admin/ContactUs/DeleteContactUs/@item.Id" class="btn btn-outline-danger" id="DeleteBtn"
+                       onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                </td>
+
+                
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+

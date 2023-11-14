@@ -1,0 +1,41 @@
+﻿@model List<ResultSocialMediaDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table table-hover table-custom spacing8">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Icon</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Icon</td>
+                        <td>@item.Name</td>
+                        <td>@item.Url</td>
+                        <td>
+                        <td>
+                            <a href="/Admin/SocialMedia/DeleteSocialMedia/@item.Id" class="btn btn-danger" id="DeleteBtn"
+                               onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                        </td>
+                        <td><a href="/Admin/SocialMedia/UpdateSocialMedia/@item.Id" class="btn btn-success ">Güncelle</a></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="/Admin/SocialMedia/AddSocialMedia" class="btn btn-outline-info">Yeni Sosyal Medya Ekle</a>
+    </div>
+</div>
+

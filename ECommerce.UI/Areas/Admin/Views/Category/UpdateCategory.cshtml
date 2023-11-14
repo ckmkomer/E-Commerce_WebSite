@@ -1,0 +1,21 @@
+﻿@using ECommerce.DtoLayer.Dtos.GenreCategoryDtos;
+@model UpdateCategoryDto
+
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name">Kategori Adı:</label>
+        <input asp-for="Name" class="form-control" required>
+    </div>
+
+   
+
+    <input asp-for="Id" type="hidden"> 
+    <button type="submit" class="btn btn-success">Kategoriyi Güncelle</button>
+</form>
+
+

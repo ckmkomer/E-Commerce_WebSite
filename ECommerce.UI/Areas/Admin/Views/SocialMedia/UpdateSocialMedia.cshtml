@@ -1,0 +1,47 @@
+﻿@model UpdateSocialMediaDto
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="header">
+          
+        </div>
+        <div class="body">
+            <form method="post" class="forms-sample">
+                <input type="hidden" asp-for="Id" />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Sosyal Medya Icon : </span>
+                    </div>
+                    <input type="text" asp-for="Icon" class="form-control" placeholder="Sosyal medya icon giriniz." aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3">
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Sosyal Medya Adı : </span>
+                    </div>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Sosyal medya Adını giriniz." aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Sosyal Medya URL : </span>
+                    </div>
+                    <input type="text" asp-for="Url" class="form-control" placeholder="Sosyal medya URL giriniz." aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3">
+                    <span asp-validation-for="Url" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary me-2 col-12">Sosyal Medya Güncelle!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
