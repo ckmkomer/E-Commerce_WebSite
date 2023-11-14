@@ -48,7 +48,7 @@ namespace ECommerce.UI.Areas.Admin.Controllers
                 // AutoMapper kullanarak Dto'yu Entity'ye dönüştürür ve veritabanına ekler.
                 var bodySizeValue = _mapper.Map<CreateBodySizeDto, BodySize>(createBodySizeDto);
                 _bodySizeService.TAdd(bodySizeValue);
-                //_unitOfWork.Commit();
+              
                 return LocalRedirect("/Admin/BodySize/Index");
             }
             else
