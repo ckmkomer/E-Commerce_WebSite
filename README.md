@@ -5,6 +5,8 @@ Admin tarafında modüler bir alan (area) yapısı oluşturarak, admin kullanıc
 Projenin güvenlik katmanında Identity Framework'ü kullanarak, güvenli üye girişi ve yetkilendirme işlemlerini sağladım. Admin rolüne sahip kullanıcılar, özel yönetim paneline erişebilir ve sistemi geniş bir perspektiften yönetebilirler.
 Kullanıcılar, ürünleri sepete ekleyebilir, sepeti güncelleyebilir ve üye olduktan sonra sepet işlemlerini tamamlayabilirler. Bu süreçte, kullanıcıların daha hızlı ve etkileşimli bir alışveriş deneyimi yaşaması için sepet işlemlerinde Ajax yapısını kullandım.
 Ön yüzde iletişim, hakkımızda, ürünler ve öne çıkan kısımları dinamik hale getirerek kullanıcıların daha etkileşimli bir deneyim yaşamasını sağladım.
+
+
 ![Screenshot 2023-11-14 231820](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/da3072d3-db0e-49d4-8ad8-960f8b7f3a64)
 ![Screenshot 2023-11-14 231909](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/b92ff066-d8d3-479c-8423-78c4c83200d9)
 ![Screenshot 2023-11-14 231935](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/12c1a5f8-e4aa-4d56-8bac-00117db710fc)
