@@ -15,3 +15,4 @@ Kullanıcılar, ürünleri sepete ekleyebilir, sepeti güncelleyebilir ve üye o
 ![Screenshot 2023-11-14 232020](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/6e8764e7-1aa9-4643-b93e-213010f5759b)
 ![Screenshot 2023-11-14 232057](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/de45005f-a0d7-4733-9af3-315091094f32)
 ![Screenshot 2023-11-14 232112](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/3c216a18-9d22-481c-a96a-9409a9cf9906)
+![Screenshot 2023-11-17 191814](https://github.com/ckmkomer/E-Commerce_WebSite/assets/101353123/bdbd1ae5-4816-49b6-94ef-9fc48c6da964)
